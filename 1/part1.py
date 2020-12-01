@@ -11,7 +11,7 @@ for line in fd.readlines() :
 
 # Naive - O(n^2) solution :
 for i in range(len(entries)) :
-    for j in range(i, len(entries)) :
+    for j in range(i + 1, len(entries)) :
         if entries[i] + entries[j] == 2020 :
             print("O(n^2) : {}".format(entries[i] * entries[j]))
             break
