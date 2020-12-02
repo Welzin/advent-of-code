@@ -7,10 +7,10 @@ fd = open("input", "r")
 valid = 0
 
 for line in fd.readlines() :
-    match = re.findall(r"(\d+)-(\d+) (.): (.*)", line)[0]
+    i, j, char, string = re.search(r"(\d+)-(\d+) (.): (.*)", line).groups()
 
-    a = match[3][int(match[0]) - 1] == match[2]
-    b = match[3][int(match[1]) - 1] == match[2]
+    a = string[int(i) - 1] == char
+    b = string[int(j) - 1] == char
 
     if bool(a) ^ bool(b) :
         valid += 1

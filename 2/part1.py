@@ -7,9 +7,9 @@ fd = open("input", "r")
 valid = 0
 
 for line in fd.readlines() :
-    match = re.findall(r"(\d+)-(\d+) (.): (.*)", line)[0]
+    least, max, char, string = re.search(r"(\d+)-(\d+) (.): (.*)", line).groups()
 
-    if int(match[0]) <= match[3].count(match[2]) <= int(match[1]) :
+    if int(least) <= string.count(char) <= int(max) :
         valid += 1
 
 print(valid)
