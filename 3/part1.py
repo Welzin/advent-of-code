@@ -1,7 +1,5 @@
 #! /usr/bin/python3
 
-import re
-
 fd = open("input", "r")
 
 col = 0
