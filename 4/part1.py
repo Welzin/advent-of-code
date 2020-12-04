@@ -2,25 +2,19 @@
 
 def isValid(passport) :
     needed = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
-    requiredFields = 0
     for required in needed :
-        if required in current :
-            requiredFields += 1
+        if required not in passport :
+            return False
 
-    return requiredFields == len(needed)
+    return True
 
 fd = open("input", "r")
-
+info = fd.read()
+passports = info.rstrip().split('\n\n')
 count = 0
-current = ""
-for line in fd.readlines() :
 
-    if line == "\n" :
-        count += isValid(current)
-        current = ""
+for passport in passports :
+    info = passport.replace('\n', ' ')
+    count += isValid(info)
     
-    current += " " + line.strip()
-    
-
-count += isValid(current)
 print(count)
