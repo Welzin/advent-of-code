@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#! /usr/bin/env python3
 
 # Improved previous code with cleaner rule checking :
 #   - Improved RegEx with the solutions from here : https://www.reddit.com/r/adventofcode/comments/k6e8sw/2020_day_04_solutions/

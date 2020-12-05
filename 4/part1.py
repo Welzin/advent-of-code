@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#! /usr/bin/env python3
 
 def isValid(passport) :
     needed = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
