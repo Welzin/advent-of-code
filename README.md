@@ -23,4 +23,4 @@ And then came the 1st of December. Someone reminded me about *Advent of Code*. A
 
 ### Result 
 
-Currently : 22 stars out of 22.
+Currently : 26 stars out of 26.
