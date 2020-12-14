@@ -17,3 +17,4 @@ Solutions for the [edition of 2020](https://adventofcode.com/).
 |[11](https://adventofcode.com/2020/day/11)|[Day 11 - Seating System](/2020/11)|
 |[12](https://adventofcode.com/2020/day/12)|[Day 12 - Rain Risk](/2020/12)|
 |[13](https://adventofcode.com/2020/day/13)|[Day 13 - Shuttle Search](/2020/13)|
+|[14](https://adventofcode.com/2020/day/14)|[Day 14 - Docking Data](/2020/14)|
