@@ -6,21 +6,8 @@ My solutions for the problems presented in the [advent of code](https://adventof
 - part1.py, the algo to solve the part1 of the problem
 - part2.py, the algo to solve the part2 of the problem
 
-## 2020
+## 2020 - Result
 
-Solutions can be found here : [2020](/2020).
+48 stars out of 50. I didn't know how to do the part 2 of [day 20](https://adventofcode.com/2020/day/20). I passed the first part of the problem by « cheating » (calculation of the number of edges between the tiles in order to recover those that have the least number of edges in common with the others), but couldn't reconstruct the whole image. Anyway, I think it's good enough for a first participation. Here's what I got at the end :
 
-I first heard about *Advent of Code* last year, when it was almost finished. I had a lot of work and didn't really have the motivation to do it afterwards. This year, I've participated in 3 contests of code, and the result... wasn't satisfactory. Even though I've finished 70th on [the shaker's contest](https://le-shaker.com/en/) and top 1000 in the 2 [BattleDevs](https://battledev.blogdumoderateur.com/), I still couldn't go through the 4th exercise. So, after the last BattleDev, I've thought about it, and decided to do one exercise every day. I started the 27th November, on [CodinGame](https://www.codingame.com/), with 2 goals :
-
-- Learn python3
-- Learn widely known algorithms 
-
-And then came the 1st of December. Someone reminded me about *Advent of Code*. And here I am, with updated objectives :
-
-- Learn python3
-- Learn widely known algorithms
-- Get at least 35 stars
-
-### Result 
-
-Currently : 26 stars out of 26.
+![Result 2020](https://cdn.discordapp.com/attachments/483585144184242176/792005292912803840/unknown.png)
