@@ -2,7 +2,7 @@
 
 def analyse_pattern(ls) :
     corresponds = {2:1,7:8,4:4,3:7}
-    dct = {corresponds[len(i)]:i for i in ls if len(i) == 2 or len(i) == 3 or len(i) == 4 or len(i) == 7}
+    dct = {corresponds[len(i)]:i for i in ls if len(i) in [2, 3, 4, 7]}
     for i in range(10) :
         s = len(ls[i])
         if s == 6 : #0 6 9
