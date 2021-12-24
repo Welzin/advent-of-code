@@ -1,0 +1,18 @@
+inp w
+mul x 0         
+add x z         <----- x = z
+mod x 26        <----- x %= 26
+div z 1         <----- z //= div
+add x 12        <----- x = (z%26)+add_x
+eql x w         <----- x = 0 if (z%26+add_x)==w else 1
+eql x 0
+mul y 0
+add y 25
+mul y x
+add y 1
+mul z y         <----- z = z//div*26 si (z%26)+add_x == w else z
+mul y 0
+add y w
+add y 1         <----- y = w+add_y
+mul y x         
+add z y         <----- z = (z//div*26)+w+add_y si (z%26)+add_x == w else z//div
