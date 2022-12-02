@@ -9,11 +9,7 @@ vector<int> parse(const vector<string> &in) {
     
     while (sep != end) {
 	sep = find(start, end, "");
-	parsedInput.push_back(
-	    sum(
-		convert<int>(vector(start, sep), [](const string &s) -> int { return stoi(s); })
-	    )
-	);
+	parsedInput.push_back(sum(convert<int>(vector(start, sep), [](const string &s) -> int { return stoi(s); })));
 	start = next(sep);
     }
 

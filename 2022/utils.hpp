@@ -5,7 +5,7 @@ using namespace std;
 /*** Start AoC header ***/
 istream& operator>>(istream &is, vector<string> &v) {
     string s; getline(cin, s);
-    v.push_back(s);
+    if (s.size()) v.push_back(s);
     return is;
 }
 
