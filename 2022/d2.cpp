@@ -16,14 +16,14 @@ vector<pair<char, char>> parse(const vector<string> &input) {
 }
 
 int part1(const vector<pair<char, char>> &in) {
-    return sum(convert<int>(in, [](const pair<char, char> &p) {
+  return sum(mapv(in, [](pair<char, char> p) -> int {
 	Shape opponent = char_to_shape(p.first), player = char_to_shape(p.second);
         return ((opponent == player) * 3 + (player == (opponent + 1) % 3) * 6) + (player + 1);
     }));
 }
 
 int part2(const vector<pair<char, char>> &in) {
-    return sum(convert<int>(in, [](const pair<char, char> &p) -> int {
+    return sum(mapv(in, [](pair<char, char> p) -> int {
 	Shape opponent = char_to_shape(p.first);
 	switch (p.second) {
 	// As modulo operator doesn't work as intended for negative values, have to a case disjunction.
