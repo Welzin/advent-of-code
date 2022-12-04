@@ -45,4 +45,15 @@ vector<T> intersection(vector<T> v1, vector<T> v2) {
     set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), back_inserter(inter));
     return inter;
 }
+
+vector<string> split(string str, char sep) {
+    vector<string> splitStr;
+    size_t pos = 0, start = 0;
+    while ((pos = str.find(sep, start)) != string::npos) {
+	splitStr.push_back(str.substr(start, pos - start));
+	start = pos + 1;
+    }
+    splitStr.push_back(str.substr(start));
+    return splitStr;
+}
 /*** End AoC header ***/
