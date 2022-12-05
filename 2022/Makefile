@@ -1,5 +1,5 @@
 
-DAYS=d4	d3	d2	d1
+DAYS=d5	d4	d3	d2	d1
 
 all: $(DAYS)
 
@@ -13,6 +13,9 @@ d3:
 	mkdir -p build
 	g++ -Wall -pedantic -std=c++2a -o build/$@ $@.cpp
 d4:
+	mkdir -p build
+	g++ -Wall -pedantic -std=c++2a -o build/$@ $@.cpp
+d5:
 	mkdir -p build
 	g++ -Wall -pedantic -std=c++2a -o build/$@ $@.cpp
 
