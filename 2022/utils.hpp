@@ -38,6 +38,24 @@ int sum(const vector<int> &v) {
 }
 
 template <typename T>
+T max(const vector<T> &container) {
+    T max = container[0];
+    for (auto it = next(container.begin()); it != container.end(); ++it) {
+	if (*it > max) max = *it;
+    }
+    return max;
+}
+
+template <typename T>
+T min(const vector<T> &container) {
+    T min = container[0];
+    for (auto it = next(container.begin()); it != container.end(); ++it) {
+	if (*it < min) min = *it;
+    }
+    return min;
+}
+
+template <typename T>
 vector<T> intersection(vector<T> v1, vector<T> v2) {
     vector<T> inter;
     sort(v1.begin(), v1.end());
