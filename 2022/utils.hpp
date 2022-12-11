@@ -64,6 +64,14 @@ vector<T> intersection(vector<T> v1, vector<T> v2) {
     return inter;
 }
 
+template <typename T>
+bool contains(const vector<T> v, T element) {
+    for (const T &e : v) {
+	if (e == element) return true;
+    }
+    return false;
+}
+
 vector<string> split(string str, char sep) {
     vector<string> splitStr;
     size_t pos = 0, start = 0;
