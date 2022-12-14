@@ -82,4 +82,15 @@ vector<string> split(string str, char sep) {
     splitStr.push_back(str.substr(start));
     return splitStr;
 }
+
+vector<string> split(string str, const string &sep) {
+    vector<string> splitStr;
+    size_t pos = 0, start = 0;
+    while ((pos = str.find(sep, start)) != string::npos) {
+	splitStr.push_back(str.substr(start, pos - start));
+	start = pos + sep.size();
+    }
+    splitStr.push_back(str.substr(start));
+    return splitStr;
+}
 /*** End AoC header ***/
