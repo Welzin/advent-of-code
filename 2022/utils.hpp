@@ -33,7 +33,8 @@ T fold_left(const vector<U> &v, T init, Lambda fun) {
     return result;
 }
 
-int sum(const vector<int> &v) {
+template <typename T>
+T sum(const vector<T> &v) {
     return accumulate(v.begin(), v.end(), 0);
 }
 
