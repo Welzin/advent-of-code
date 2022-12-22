@@ -5,13 +5,6 @@ struct Problem {
     unordered_map<string, vector<string>> neighbors;
 };
 
-struct State {
-    size_t totalPressure;
-    string currentValve;
-    unordered_map<string, bool> seen;
-    size_t valvesOpened;
-};
-
 vector<string> getCapitalizedWords(const string &s) {
     regex capitalized(R"([A-Z]{2})");
     sregex_iterator matches(s.cbegin(), s.cend(), capitalized);
