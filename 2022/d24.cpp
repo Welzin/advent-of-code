@@ -96,7 +96,7 @@ pair<size_t, Grid> bruteforce(Grid grid, size_t xsrc, size_t ysrc, size_t xdst, 
 
         set<pair<int, int>> nextStates;
         for (auto [x, y] : states) {
-            // 4 neighbors
+            // 4 neighbors + current place
             for (auto dir : vector<pair<int, int>>{ {1, 0}, {0, 1}, {0, -1}, {-1, 0}, { 0, 0 } }) {
                 int altx = (int)x + dir.first;
                 int alty = (int)y + dir.second;
