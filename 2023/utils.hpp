@@ -107,6 +107,11 @@ vector<string> split(string str, const string &sep) {
     splitStr.push_back(str.substr(start));
     return splitStr;
 }
-/*** End AoC header ***/
+
+  void display_time(chrono::time_point<chrono::high_resolution_clock> st, const string &msg) {
+  auto duration = chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now() - st);
+  cout << msg << duration.count() << "ms.\n";
+}
+
 
 };

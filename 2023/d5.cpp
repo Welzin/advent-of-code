@@ -1,4 +1,5 @@
 #include "utils.hpp"
+#include <sys/wait.h>
 
 enum Map {
   SeedToSoil = 0,
@@ -78,7 +79,6 @@ void part2(const vector<string> &inputs) {
   auto [seeds, maps] = parse(inputs);
 
   for (size_t i = 0; i < seeds.size(); i += 2) {
-    cout << "Seed " << i / 2 << "\n";
     for (size_t j = 0; j < seeds[i + 1]; ++j) {
       size_t result = mapSeed(seeds[i] + j, maps);
       total = total < result ? total : result;
@@ -90,6 +90,10 @@ void part2(const vector<string> &inputs) {
 
 int main() {
   vector<string> inputs = utils::input();
+  auto start = chrono::high_resolution_clock::now();
   part1(inputs);
+  utils::display_time(start, "Part 1 took: ");
+  start = chrono::high_resolution_clock::now();
   part2(inputs);
+  utils::display_time(start, "Part 2 took: ");
 }
