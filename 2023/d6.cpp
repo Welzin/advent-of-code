@@ -68,8 +68,8 @@ int main() {
   vector<string> inputs = utils::input();
   auto start = chrono::high_resolution_clock::now();
   part1(inputs);
-  utils::display_time(start, "Part 1 took: ");
+  utils::display_time<chrono::microseconds>(start, "Part 1 took: ", "us");
   start = chrono::high_resolution_clock::now();
   part2(inputs);
-  utils::display_time(start, "Part 2 took: ");
+  utils::display_time<chrono::microseconds>(start, "Part 2 took: ", "us");
 }

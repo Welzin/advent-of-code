@@ -108,9 +108,11 @@ vector<string> split(string str, const string &sep) {
     return splitStr;
 }
 
-  void display_time(chrono::time_point<chrono::high_resolution_clock> st, const string &msg) {
-  auto duration = chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now() - st);
-  cout << msg << duration.count() << "ms.\n";
+  template <typename Duration>
+  void display_time(chrono::time_point<chrono::high_resolution_clock> st, const string
+		    &msg, const string &timeRepr) {
+  auto duration = chrono::duration_cast<Duration>(chrono::high_resolution_clock::now() - st);
+  cout << msg << duration.count() << timeRepr << ".\n";
 }
 
 
