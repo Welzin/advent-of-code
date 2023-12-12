@@ -105,8 +105,8 @@ int main() {
   vector<size_t> galaxies = parse(inputs);
   auto start = chrono::high_resolution_clock::now();
   part1(galaxies);
-  utils::display_time<chrono::milliseconds>(start, "Part 1 took: ", "us");
+  utils::display_time<chrono::milliseconds>(start, "Part 1 took: ", "ms");
   start = chrono::high_resolution_clock::now();
   part2(galaxies);
-  utils::display_time<chrono::milliseconds>(start, "Part 2 took: ", "us");
+  utils::display_time<chrono::milliseconds>(start, "Part 2 took: ", "ms");
 }
