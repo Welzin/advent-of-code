@@ -39,7 +39,6 @@ void updateMap(int h, const string &key, int val) {
 }
 
 void part2(const vector<string> &inputs) {
-  
   for (auto s : inputs) {
     string v;
     if (s[s.size() - 1] == '-') {
