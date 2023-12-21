@@ -115,5 +115,8 @@ vector<string> split(string str, const string &sep) {
   cout << msg << duration.count() << timeRepr << ".\n";
 }
 
-
+/* Positive mod */
+int mod(int k, int n) {
+  return (k % n + n) % n;
+}
 };
