@@ -8,10 +8,24 @@ namespace utils {
   using LL = long long int;
   using PI = pair<LL,LL>;
   
-  struct DefaultToFalse {
+  struct Bool {
     bool b = false;
     operator bool() { return b; }
     void operator =(bool oth) { b = oth; }
+  };
+  template <int init>
+  struct Int {
+    int n = init;
+    operator int() { return n; }
+    void operator =(int oth) { n = oth; }
+    bool operator >(int oth) { return n > oth; }
+    bool operator ==(int oth) { return n == oth; }
+    bool operator >=(int oth) { return n >= oth; }
+    bool operator <(int oth) { return n < oth; }
+    bool operator <=(int oth) { return n <= oth; }
+    bool operator !=(int oth) { return n != oth; }
+    int operator +(int oth) { return n + oth; }
+    int operator -(int oth) { return n - oth; }
   };
 
   /*** Start AoC header ***/
