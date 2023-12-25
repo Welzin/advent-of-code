@@ -17,15 +17,17 @@ namespace utils {
   struct Int {
     int n = init;
     operator int() { return n; }
-    void operator =(int oth) { n = oth; }
+    int operator =(int oth) { n = oth; return n; }
     bool operator >(int oth) { return n > oth; }
     bool operator ==(int oth) { return n == oth; }
     bool operator >=(int oth) { return n >= oth; }
     bool operator <(int oth) { return n < oth; }
+    bool operator <(Int<init> oth) const { return n < oth.n; }
     bool operator <=(int oth) { return n <= oth; }
     bool operator !=(int oth) { return n != oth; }
     int operator +(int oth) { return n + oth; }
     int operator -(int oth) { return n - oth; }
+    int operator +=(int oth) { n += oth; return n; }
   };
 
   /*** Start AoC header ***/
