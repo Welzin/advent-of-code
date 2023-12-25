@@ -117,7 +117,7 @@ void part2() {
   size_t res = 0;
 
   for (size_t i = 0; i < cubes.size(); ++i) {
-    map<int, utils::DefaultToFalse> moves;
+    map<int, utils::Bool> moves;
     moves[i] = true;
     for (size_t j = 0; j < cubes.size(); ++j) {
       if (graph[j].size() && all_of(graph[j].begin(), graph[j].end(),
