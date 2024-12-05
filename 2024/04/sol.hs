@@ -1,6 +1,5 @@
 import System.Environment   
 import System.IO()
-import Debug.Trace
 
 readLines :: FilePath -> IO([String])
 readLines f = fmap lines $ readFile f
