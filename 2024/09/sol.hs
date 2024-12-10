@@ -3,7 +3,6 @@ import System.IO()
 import Data.List
 import Data.Char
 import Data.Maybe
-import Debug.Trace
 
 readLine :: FilePath -> IO[Int]
 readLine f = map digitToInt . init <$> readFile f
