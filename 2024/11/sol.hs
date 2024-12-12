@@ -11,10 +11,10 @@ digits x
   | otherwise = (floor . logBase 10.0 . fromIntegral $ x) + 1
 
 left :: Int -> Int
-left x = div x $ 10 ^ (div (digits x) 2)
+left x = div x $ 10 ^ div (digits x) 2
 
 right :: Int -> Int
-right x = mod x $ 10 ^ (div (digits x) 2)
+right x = mod x $ 10 ^ div (digits x) 2
 
 applyRule :: Int -> Map Int Int -> Map Int Int -> Map Int Int
 applyRule x map_ acc
@@ -23,7 +23,7 @@ applyRule x map_ acc
   | otherwise = insertWith (+) (x * 2024) (map_!x) acc
 
 computeNext :: [Int] -> Map Int Int -> Map Int Int -> Map Int Int
-computeNext [] map_ acc = acc
+computeNext [] _ acc = acc
 computeNext (x:xs) map_ acc = computeNext xs map_ (applyRule x map_ acc)
 
 run :: Map Int Int -> Int -> Int
