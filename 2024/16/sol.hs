@@ -34,7 +34,7 @@ part2 map_ (sx,sy) (ex,ey) = length filteredVertices
   where dists1 = dijkstra map_ (S.singleton (0, (0, 1, sx, sy))) M.empty
         dists2 = dijkstra map_ (S.fromList startFromEd) M.empty
         best = minimum [M.findWithDefault (maxBound :: Int) (dx, dy, ex, ey) dists1 | (dx, dy) <- dirs]
-        startFromEd = [(0, (dx, dy, ex, ey)) | (dx, dy) <- dirs, map_!(ex + dx)!(ey + dy) /= '#']
+        startFromEd = [(0, (dx, dy, ex, ey)) | (dx, dy) <- dirs]
         allKeys = S.toList (S.union (S.fromList (M.keys dists1)) (S.fromList (M.keys dists2)))
         reverseDir (dx,dy,x,y) = (-dx,-dy,x,y)
         vertices = filter (\u -> M.findWithDefault (maxBound :: Int) u dists1 + M.findWithDefault (maxBound :: Int) (reverseDir u) dists2 == best) allKeys
