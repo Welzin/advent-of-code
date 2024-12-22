@@ -19,12 +19,13 @@ part1 = foldr (\x acc -> compute 2000 x + acc) 0
 compute' :: Int -> Int -> [Int] -> H.HashMap (Int, Int, Int, Int) Int -> S.Set (Int, Int, Int, Int) -> H.HashMap (Int, Int, Int, Int) Int
 compute' 0 _ _ sequences _ = sequences
 compute' n x curr sequences seen
-  | length curr == 4 && k `elem` seen = compute' (n - 1) x' (x' `mod` 10 - x `mod` 10 : init curr) sequences seen
-  | length curr == 4 && not(k `elem` seen) = compute' (n - 1) x' (x' `mod` 10 - x `mod` 10 : init curr) updatedSeq (S.insert k seen)
-  | otherwise = compute' (n - 1) x' (x' `mod` 10 - x `mod` 10 : curr) sequences seen
+  | length curr == 4 && (k `elem` seen || head curr < 0) = compute' (n - 1) x' (c : init curr) sequences seen
+  | length curr == 4 && k `notElem` seen = compute' (n - 1) x' (c : init curr) updatedSeq (S.insert k seen)
+  | otherwise = compute' (n - 1) x' (c : curr) sequences seen
   where updatedSeq = H.insertWith (+) k (x `mod` 10) sequences
         x' = compute 1 x
         k = (curr!!3, curr!!2, curr!!1, curr!!0)
+        c = x' `mod` 10 - x `mod` 10
 
 part2 :: [Int] -> Int
 part2 ℓ = maximum (H.elems $ foldr aux H.empty ℓ)
