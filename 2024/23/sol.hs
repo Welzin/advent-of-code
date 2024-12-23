@@ -1,3 +1,5 @@
+import Lib.Graphs
+
 import System.Environment   
 import System.IO()
 import Data.List.Split
@@ -19,21 +21,11 @@ part1 :: M.Map String [String] -> Int
 part1 connections = length . S.filter hasChiefHisto $ triangles connections
   where hasChiefHisto = any (\x -> head x == 't') . S.toList
 
-maximalCliques :: M.Map String [String] -> S.Set String -> S.Set String -> S.Set String -> [[String]]
-maximalCliques graph r p x
-  | null p && null x = [S.toList r]
-  | otherwise = aux (S.toList p) r x 
-    where aux [] _ _ = []
-          aux (v:p') r x = acc ++ aux p' r (S.insert v x)
-            where acc = maximalCliques graph (S.insert v r) (S.intersection (S.fromList p') $ neighs v) (S.intersection x $ neighs v)
-                  neighs v = S.fromList (graph M.! v)
-
 part2 :: M.Map String [String] -> String
 part2 connections = intercalate "," $ head $ filter ((maxLength==) . length) cliques
-  where cliques = maximalCliques connections S.empty (S.fromList $ M.keys connections) S.empty
+  where cliques = allMaximalCliques (M.keys connections) (connections M.!)
         maxLength = maximum (map length cliques)
   
-
 main :: IO()
 main = do
   args <- getArgs

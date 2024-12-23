@@ -1,3 +1,5 @@
+import Lib.Graphs
+
 import System.Environment   
 import System.IO()
 import qualified Data.Map as M
@@ -14,27 +16,10 @@ dirpadGraph = M.fromList [('<', ['v']), ('v', ['<', '^', '>']), ('^', ['v', 'A']
 readLines :: FilePath -> IO[String]
 readLines f = lines <$> readFile f
 
-bfs :: M.Map Char [Char] -> [(Int, Char)] -> M.Map Char Int -> S.Set Char -> M.Map Char Int
-bfs _ [] dists _ = dists
-bfs graph ((cost, c):xs) dists seen
-  | c `elem` seen = bfs graph xs dists seen
-  | otherwise = bfs graph (xs ++ neighs) updatedDists (S.insert c seen)
-  where neighs = [(cost + 1, child) | child <- graph M.! c]
-        updatedDists = M.insert c cost dists
-
-shortestPaths :: M.Map Char [Char] -> Char -> Char -> [Char] -> S.Set Char -> [[Char]]
-shortestPaths graph c c' nodes seen
-  | c == c' = [[]]
-  | otherwise = [x:ℓ | x <- graph M.! c, x `elem` nodes, x `notElem` seen, ℓ <- next x]
-  where next x = shortestPaths graph x c' nodes (S.insert c seen)
-
 getAllPaths :: M.Map Char [Char] -> [Char] -> M.Map (Char, Char) [[Char]]
 getAllPaths _ [] = M.empty
 getAllPaths graph (c:cs) = foldr (\c' acc -> M.insert (c, c') (paths c') acc) (getAllPaths graph cs) (M.keys graph)
-  where dists = bfs graph [(0, c)] M.empty S.empty
-        paths c' = [c:ℓ | ℓ <- shortestPaths graph c c' nodes S.empty]
-          where nodes = [x | x <- M.keys graph, dists M.! x + dists' M.! x == dists M.! c']
-                dists' = bfs graph [(0, c')] M.empty S.empty
+  where paths c' = allShortestPathsU c c' (graph M.!) (M.keys graph)
 
 allPaths :: M.Map Char [Char] -> M.Map (Char, Char) [[Char]]
 allPaths graph = getAllPaths graph $ M.keys graph
