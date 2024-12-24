@@ -13,8 +13,9 @@ fromPairList xs x = map snd . filter ((x==) . fst) $ xs
 
 -- Given a set of vertices and a neighbour function, returns a neighbour function that has reversed
 -- all the edges of the graph.
-reverseGraph :: Eq a => [a] -> (a -> [a]) -> a -> [a]
-reverseGraph vertices f x = [y | y <- vertices, x `elem` f y]
+reverseGraph :: Ord a => [a] -> (a -> [a]) -> a -> [a]
+reverseGraph vertices f = (reversedGraph M.!)
+  where reversedGraph = foldr (\x acc -> foldr (\y -> M.insertWith (++) y [x]) acc (f x)) (M.fromList [(x, []) | x <- vertices]) vertices
 
 -- Given a vertex and a neighbours function, returns the set of vertices seen together with the
 -- exploration tree (stored as a map of parents).
