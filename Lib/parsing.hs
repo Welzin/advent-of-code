@@ -1,3 +1,4 @@
+{-# LANGUAGE FunctionalDependencies #-}
 module Lib.Parsing where
 
 import System.IO()
@@ -21,15 +22,24 @@ parseSplitInts c f = map read <$> parseSplit c f
 
 -- # Grids (i.e., n-dimensional fast-access data structures)
 
-class Grid g a where
-  (!) :: g -> Int -> a
-  (//) :: g -> [(Int, a)] -> g
+-- The free variables [i] and [a] are not really free, they are uniquely determined by [g].
+class Grid g i a | g -> a, g -> i where
+  (!) :: g -> i -> a
+  (//) :: g -> [(i, a)] -> g
 
 type Grid1D a = A.Array Int a
-type Grid2D a = A.Array Int (Grid1D a)
-type Grid3D a = A.Array Int (Grid2D a)
+type Grid2D a = A.Array (Int, Int) a
+type Grid3D a = A.Array (Int, Int, Int) a
 
-instance Grid (Grid1D a) a where
+instance Grid (Grid1D a) Int a where
+  (!) = (A.!)
+  (//) = (A.//)
+
+instance Grid (Grid2D a) (Int, Int) a where
+  (!) = (A.!)
+  (//) = (A.//)
+
+instance Grid (Grid3D a) (Int, Int, Int) a where
   (!) = (A.!)
   (//) = (A.//)
 

@@ -8,8 +8,9 @@ import qualified Data.Map as M
 -- # Structural utilities
 
 -- Building a graph from a list of pairs
-fromPairList :: Eq a => [(a, a)] -> a -> [a]
-fromPairList xs x = map snd . filter ((x==) . fst) $ xs
+fromPairList :: Ord a => [(a, a)] -> a -> [a]
+fromPairList xs = (graph M.!)
+  where graph = foldr (\(x, y) acc -> M.insertWith (++) x [y] acc) M.empty xs
 
 -- Given a set of vertices and a neighbour function, returns a neighbour function that has reversed
 -- all the edges of the graph.

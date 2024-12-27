@@ -20,12 +20,12 @@ runIntcode pos intcode
         Mul -> runIntcode (pos + 4) (intcode // [(z, x * y)])
         Halt -> intcode
         Unknown -> error "Something went wrong"
-        where x :: Int = intcode ! (intcode ! (pos + 1))
-              y :: Int = intcode ! (intcode ! (pos + 2))
-              z :: Int = intcode ! (pos + 3)
+        where x = intcode ! (intcode ! (pos + 1))
+              y = intcode ! (intcode ! (pos + 2))
+              z = intcode ! (pos + 3)
 
 runWithReplacement :: Int -> Int -> Grid1D Int -> Grid1D Int
-runWithReplacement x y intcode = (runIntcode 0 (intcode // [(1, x :: Int), (2, y :: Int)]))
+runWithReplacement x y intcode = (runIntcode 0 (intcode // [(1, x), (2, y)]))
 
 part1 :: Grid1D Int -> Int
 part1 intcode = (runWithReplacement 12 2 intcode) ! 0
@@ -36,7 +36,7 @@ part2 intcode = aux [(x, y) | x <- [0..99], y <- [0..99]]
         aux ((x, y):xs)
           | runValue == 19690720 = 100 * x + y
           | otherwise = aux xs
-          where runValue :: Int = (runWithReplacement x y intcode) ! 0
+          where runValue = (runWithReplacement x y intcode) ! 0
 
 main :: IO()
 main = do

@@ -14,7 +14,7 @@ function guard {
 function day {
     guard "ERROR: No day number given. Aborting." $1
 
-    file="$(printf "%0*d.hs" 2 $1)"
+    file="$(printf "%0*d" 2 $1)"
     echo """import Lib.Parsing
 
 import System.Environment
@@ -31,8 +31,10 @@ main = do
   args <- getArgs
   problem <- parseStrings $ head args
   print $ part1 problem
-  print $ part2 problem""" > $file
-    echo "File $file successfully created."
+  print $ part2 problem""" > "$file.hs"
+    echo "File $file.hs successfully created."
+    touch "inputs/$file.txt"
+    touch "tests/$file.txt"
 }
 
 LIBS="$(ls Lib/*.hs)"
